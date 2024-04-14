@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/fault_prediction
+ExecStart=/home/ubuntu/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/fault_prediction/fault/fault.sock fault.wsgi:application
+
+       
+[Install]
+WantedBy=multi-user.target

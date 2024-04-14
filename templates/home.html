@@ -1,0 +1,179 @@
+<!--&lt;!&ndash; home.html &ndash;&gt;-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Home</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Enter Transaction Details</h1>-->
+<!--    <form action="{% url 'predict' %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <label for="transaction_amount">Transaction Amount:</label>-->
+<!--        <input type="text" id="transaction_amount" name="transaction_amount"><br>-->
+
+<!--        <label for="payment_method">Payment Method:</label>-->
+<!--        <input type="text" id="payment_method" name="payment_method"><br>-->
+
+<!--        <label for="product_category">Product Category:</label>-->
+<!--        <input type="text" id="product_category" name="product_category"><br>-->
+
+<!--        <label for="quantity">Quantity:</label>-->
+<!--        <input type="text" id="quantity" name="quantity"><br>-->
+
+<!--        <label for="customer_age">Customer Age:</label>-->
+<!--        <input type="text" id="customer_age" name="customer_age"><br>-->
+
+<!--        <label for="device_used">Device Used:</label>-->
+<!--        <input type="text" id="device_used" name="device_used"><br>-->
+
+<!--        <label for="address_match">Address Match:</label>-->
+<!--        <input type="text" id="address_match" name="address_match"><br>-->
+
+<!--        <label for="account_age_days">Account Age Days:</label>-->
+<!--        <input type="text" id="account_age_days" name="account_age_days"><br>-->
+
+<!--        <label for="transaction_hour">Transaction Hour:</label>-->
+<!--        <input type="text" id="transaction_hour" name="transaction_hour"><br>-->
+
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+
+
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1877f2; /* Facebook blue */
+        }
+        form {
+            width: 100%;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #1877f2; /* Facebook blue */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #1659a0; /* Darker Facebook blue */
+        }
+        .facebook-logo {
+            font-size: 32px;
+            color: #1877f2; /* Facebook blue */
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="facebook-logo">𝓕</span>
+        <h1>Fraud Prediction</h1>
+        <form action="{% url 'predict' %}" method="post">
+            {% csrf_token %}
+
+            <label for="transaction_amount">Transaction Amount:</label>
+            <input type="number" id="transaction_amount" name="transaction_amount" step="0.01">
+
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="0">PayPal</option>
+                <option value="1">credit card</option>
+                <option value="2">debit card</option>
+                <option value="3">bank transfer</option>
+            </select>
+
+            <label for="product_category">Product Category:</label>
+            <select id="product_category" name="product_category">
+                <option value="0">home & garden</option>
+                <option value="1">electronics</option>
+                <option value="2">toys & games</option>
+                <option value="3">clothing</option>
+                <option value="4">health & beauty</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" step="0.01">
+
+            <label for="customer_age">Customer Age:</label>
+            <input type="number" id="customer_age" name="customer_age" step="0.01">
+
+            <label for="device_used">Device Used:</label>
+            <select id="device_used" name="device_used">
+                <option value="0">desktop</option>
+                <option value="1">tablet</option>
+                <option value="2">mobile</option>
+            </select>
+
+            <label for="address_match">Address Match:</label>
+            <select id="address_match" name="address_match">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="account_age_days">Account Age Days:</label>
+            <input type="number" id="account_age_days" name="account_age_days" step="0.01">
+
+            <label for="transaction_hour">Transaction Hour:</label>
+            <input type="number" id="transaction_hour" name="transaction_hour" step="0.01" max="23">
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
